@@ -1,13 +1,18 @@
+import { DripsyProvider, SafeAreaView, P } from 'dripsy';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+
+const theme = {};
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <DripsyProvider theme={theme}>
+      <SafeAreaView style={styles.container}>
+        <P>Open up App.tsx to start working on your app!</P>
+        <StatusBar style="auto" />
+      </SafeAreaView>
+    </DripsyProvider>
   );
 }
 
