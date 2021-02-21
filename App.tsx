@@ -8,6 +8,7 @@ import {
   Row,
   Text,
   useDripsyTheme,
+  createThemedComponent,
 } from 'dripsy';
 import { StatusBar } from 'expo-status-bar';
 import React, { useCallback, useState } from 'react';
@@ -37,12 +38,25 @@ const theme = {
       color: 'secondary',
     },
   },
+  cards: {
+    main: {
+      backgroundColor: 'secondaryTransparent',
+      width: ['90%', '40%'],
+      height: '40%',
+      padding: 3,
+    },
+  },
 };
+
+const Card = createThemedComponent(Box, {
+  themeKey: 'cards',
+  defaultVariant: 'main',
+});
 
 export default function App() {
   const [timerMode, setTimerMode] = useState(TimerMode.POMODORO);
   const onPressStart = useCallback(() => {
-    const message = `set timer for ${timerModeValueMap[timerMode]} minutes`;
+    const message = `Set timer for ${timerModeValueMap[timerMode]} minutes! Just kidding I haven't coded this part yet.`;
     if (Platform.OS === 'web') {
       return console.info(message);
     }
@@ -57,12 +71,8 @@ export default function App() {
           justifyContent: 'center',
           backgroundColor: 'primary',
         }}>
-        <Box
-          sx={{
-            backgroundColor: 'secondaryTransparent',
-          }}>
-          <Text>Ummm</Text>
-          {/* <Row sx={{ flex: 1 }}>
+        <Card>
+          <Row sx={{ flex: 1, justifyContent: 'space-evenly' }}>
             <Button
               title={TimerMode.POMODORO}
               onPress={() => setTimerMode(TimerMode.POMODORO)}
@@ -80,9 +90,9 @@ export default function App() {
             />
           </Row>
           <P sx={{ textAlign: 'center', flex: 3 }}>{`${timerModeValueMap[timerMode]}`}</P>
-          <Button title={'Start'} onPress={onPressStart} sx={{ flex: 1 }} /> */}
-        </Box>
-        <Text>Time to work!</Text>
+          <Button title={'Start'} onPress={onPressStart} sx={{ flex: 1 }} />
+        </Card>
+        <Text sx={{ padding: 3 }}>Time to work!</Text>
         <StatusBar style="auto" />
       </SafeAreaView>
     </DripsyProvider>
