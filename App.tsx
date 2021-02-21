@@ -25,7 +25,7 @@ export default function App() {
       return console.info(message);
     }
     return Alert.alert(message);
-  }, []);
+  }, [timerMode]);
   return (
     <DripsyProvider theme={theme}>
       <SafeAreaView style={styles.container}>
