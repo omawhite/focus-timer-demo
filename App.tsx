@@ -1,13 +1,10 @@
 import {
   DripsyProvider,
   SafeAreaView,
-  P,
-  Container,
   Button,
   Box,
   Row,
   Text,
-  useDripsyTheme,
   createThemedComponent,
 } from 'dripsy';
 import { StatusBar } from 'expo-status-bar';
@@ -73,23 +70,19 @@ export default function App() {
         }}>
         <Card>
           <Row sx={{ flex: 1, justifyContent: 'space-evenly' }}>
-            <Button
-              title={TimerMode.POMODORO}
-              onPress={() => setTimerMode(TimerMode.POMODORO)}
-              sx={{ mx: 5 }}
-            />
+            <Button title={TimerMode.POMODORO} onPress={() => setTimerMode(TimerMode.POMODORO)} />
             <Button
               title={TimerMode.SHORT_BREAK}
               onPress={() => setTimerMode(TimerMode.SHORT_BREAK)}
-              sx={{ mx: 5 }}
             />
             <Button
               title={TimerMode.LONG_BREAK}
               onPress={() => setTimerMode(TimerMode.LONG_BREAK)}
-              sx={{ mx: 5 }}
             />
           </Row>
-          <P sx={{ textAlign: 'center', flex: 3 }}>{`${timerModeValueMap[timerMode]}`}</P>
+          <Box sx={{ flex: 3, flexDirection: 'column', justifyContent: 'center' }}>
+            <Text sx={{ textAlign: 'center' }}>{`${timerModeValueMap[timerMode]}`}</Text>
+          </Box>
           <Button title={'Start'} onPress={onPressStart} sx={{ flex: 1 }} />
         </Card>
         <Text sx={{ padding: 3 }}>Time to work!</Text>
