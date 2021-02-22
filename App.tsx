@@ -81,7 +81,8 @@ export default function App() {
             />
           </Row>
           <Box sx={{ flex: 3, flexDirection: 'column', justifyContent: 'center' }}>
-            <Text sx={{ textAlign: 'center' }}>{`${timerModeValueMap[timerMode]}`}</Text>
+            <Text
+              sx={{ textAlign: 'center', fontSize: 8 }}>{`${timerModeValueMap[timerMode]}`}</Text>
           </Box>
           <Button title={'Start'} onPress={onPressStart} sx={{ flex: 1 }} />
         </Card>
